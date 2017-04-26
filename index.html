@@ -1,0 +1,117 @@
+<html>
+
+<head>
+    <title>personal business card</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+
+
+</head>
+
+<body ng-app="myApp">
+    <header class="jumbotron">
+        <h1>Your Business Card</h1>
+    </header>
+
+    <section class='container' ng-controller="BusinessCard">
+
+        <div class="row">
+            <section class="left col-md-3">
+                <form name="myForm" novalidate ng-submit="myForm.$valid && Accept()">
+                    <button class="accordion">Full Name :</button>
+                    <div class="panel">
+                        <input type="text" placeholder="your fulll name" ng-model="fullName" required>
+                    </div>
+
+                    <button class="accordion">Occupation</button>
+                    <div class="panel">
+                        <input type="text" placeholder="Occupation with designation" ng-model="Occupation" required>
+                    </div>
+
+                    <button class="accordion">Company Name :</button>
+                    <div class="panel">
+                        <input type="text" placeholder="Current Company Name" ng-model="Company" required>
+                    </div>
+
+                    <button class="accordion">Website :</button>
+                    <div class="panel">
+                        http://
+                        <input type="text" name="website" placeholder="you personal website url if any..." ng-model="website"
+                            required>
+
+                    </div>
+                    <button class="accordion">Email :</button>
+                    <div class="panel">
+                        <input name="email" type="email" placeholder="you personal website url if any..." ng-model="email">
+                        <br/>
+                        <span ng-show="myForm.email.$dirty && myForm.email.$invalid">Invalid email</span>
+
+                    </div>
+                    <button class="accordion">Background Colour & image :</button>
+                    <div class="panel">
+                        <input name="background" type="color" ng-model="color">
+                        <br/>
+                        <br/>
+                        <input name="background" type="file" accept="image/*" ng-model="imge">
+
+                    </div>
+                    <input type="submit" style="   margin-top: 2%;" class="btn btn-default" value="Submit ">
+                </form>
+            </section>
+            <section class="mid col-md-6" ng-view>
+
+                
+
+
+
+            </section>
+            <section class="right col-md-2">
+
+                <button id="export" class="btn btn-default"><a href="#card">Export</a></button>
+
+            </section>
+
+        </div>
+
+
+
+    </section>
+
+
+
+</body>
+
+<script src='js/app.js'></script>
+<script src="js/service/servicecalls.js"></script>
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].onclick = function () {
+            /* Toggle between adding and removing the "active" class,
+            to highlight the button that controls the panel */
+            this.classList.toggle("active");
+
+            /* Toggle between hiding and showing the active panel */
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        }
+    }
+
+</script>
+
+</html>
